@@ -1,0 +1,15 @@
+﻿[
+  {
+    "id": 1001,
+    "countryname": "Finland",
+    "countrycode": "FIN",
+    "capitalcity": "Helsinki"
+  },
+  {
+    "id": 1002,
+    "countryname": "Sweden",
+    "countrycode": "SWE",
+    "capitalcity": "Stockholm"
+  }
+]
+

@@ -1,32 +1,23 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Json_Reader.Models;
+using Newtonsoft.Json;
+using System.Web;
+
 
 namespace MVC_Json_Reader.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public ActionResult Index()
     {
-        _logger = logger;
-    }
-
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        List<CountryCode> items = new List<CountryCode>();
+        using (StreamReader r = new StreamReader("Content/countrycodes.json"))
+        {
+            string json = r.ReadToEnd();
+            items = JsonConvert.DeserializeObject<List<CountryCode>>(json);
+        }
+        return View(items);
     }
 }
 

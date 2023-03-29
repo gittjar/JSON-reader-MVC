@@ -1,9 +1,25 @@
-﻿@{
+﻿@model List<MVC_Json_Reader.Models.CountryCode>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 
+<table>
+    <tr>
+        <th>Country</th>
+        <th>Countrycode</th>
+        <th>Capital City</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.countryname</td>
+            <td>@item.countrycode</td>
+            <td>@item.capitalcity</td>
+        </tr>
+      
+    }
+
+</table>
